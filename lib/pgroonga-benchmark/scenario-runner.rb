@@ -68,7 +68,7 @@ module PGroongaBenchmark
         queue << nil
       end
       loop do
-        threads.delete_if(&:alive?)
+        threads.keep_if(&:alive?)
         break if threads.empty?
         n_remained_jobs = queue.size - n_workers
         break if n_remained_jobs.zero?
